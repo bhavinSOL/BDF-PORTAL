@@ -1,0 +1,305 @@
+ECU,DTC Code,DTC Description,Total Occurrences
+BCM Hella,NO DTC PRESENT,Switches Not Pressed Routine Status Read Failed,561.0
+ESP/ABS,NO DTC PRESENT,Fill in Process Byte NOK,502.0
+BCM Hella,NO DTC PRESENT,PDC Sensor Calibration Failed,403.0
+BCM Hella,NO DTC PRESENT,Input Switch Test Routine Status Read Failed,218.0
+BCM Hella,NO DTC PRESENT,VEHICLE NOT SHIFTED IN REVERSE GEAR WITHIN A SPECIFTC TIME,193.0
+EMS/TCU,NO DTC PRESENT,Accelarator Test Failed,162.0
+BCM Hella/EMS Bosch,NO DTC PRESENT,ECU Start Diagnostics Failed,155.0
+BCM Hella,NO DTC PRESENT,Number of Key Paired Status Reading Failed,153.0
+IHU,B1C0E13,Microphone Signal Input circuit open,144.0
+BCM Hella,B164405,No Transponder Key Pairing Done – System Programming Failures,139.0
+BCM Hella,B224C1D,Right Turn Indicator Partial bulb out Either Front Right or Rear Right Turn indicator bulb is open circuit,136.0
+BCM Hella,B165105,Partial Transponder Key Pairing Done - System Programming Failures,135.0
+VECU Bosch 1.0,P30B816,AC Linear Pressure Sensor value input to VECU - circuit voltage below threshold,133.0
+BCM Hella,B22291D,Left Turn Indicator Partial bulb out. EitherForant Left Or Rear Left Turn Indicator bulb is open Circuit,113.0
+VECU Bosch 1.0,P301F13,PDU HVIL Sense PWM circuit open,105.0
+VECU Bosch 1.0,NO DTC PRESENT,Drive Mode Switch Status NOK,104.0
+VECU Bosch 1.0,P30AA68,DCDC Fault CAN signal received by VECU event information,90.0
+VECU Bosch 1.0,P302613,Battery cooling chiller solenoid valve activation line - circuit open,88.0
+TCU Magnetti,NO DTC PRESENT,Before power latch universal clear DTC failed,86.0
+BCM Hella,B192D15,Buzzer output line DTC – Circuit short to Battery or Open,85.0
+VECU Bosch 1.0,P301E13,Vehicle HVIL Sense PWM circuit open,80.0
+FATC BEHR Falcon4,B1F3D54,Air distribution Drive Motor Missing Calibration,80.0
+IHU Visteon MID,B1C5913,AM/FM/DRM/DAB Antenna signal-circuit open,76.0
+EPAS MANDO PV,C132900,Tuning set variant is not selected,76.0
+FATC BEHR Falcon4,B1F3F54,Fresh Air/Recirc dive motor missing calibration,74.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,Brake Pedal Test Failed,69.0
+TCU Magnetti Marreili Nano,P290502,Gear Box Engage Faild,68.0
+PEPS Marquardt Osprey,B164554,PEPS ECU missing callibration,67.0
+EMS Bosch XETA Cube Falcon4,U015131,Air bag system the error is reported when the CAN msg SRS is not received within the time duration-No signal,67.0
+BCM Hella,U100816,Control module input power 1 circuit voltage below threshold,66.0
+FATC BEHR Falcon4,B1F3E54,Air temprature drive motor missing calibration,65.0
+IPC Pricol PV,U015108,Lost communication with restraints Control Module(SRS) Bus Signal/Message failures,64.0
+IHU Visteon MID,B1C4B13,LVDC connection circuit open,63.0
+FATC BEHR Falcon4,U010008,"Lost of communication with ECM/PCM""A""-Bus Signal/Message Failure",62.0
+AirBag Bosch AB12,B00011A,Driver Airbag Deployment Control - circuit resistance below threshold,62.0
+FATC BEHR Falcon4,B1F3E54,Driver Side Temperature Door Control Motor Calibration Fault,59.0
+BCM Hella,B220415,Combined High Beam Circuit short to Battery or open,58.0
+BCM Hella,U130E08,Lost Communication with Rain Light Sensor (RLS) - Bus signal/Message Failure,58.0
+EMS Bosch,P009013,Description not available,58.0
+IHU Visteon MID,B1C0413,GPS Signal Circuit Open,56.0
+IPC Pricol PV,NO DTC PRESENT,VC No Parameter Reading Failed,53.0
+TCU Magnetti Marreili Nano,P071003,External temprature signal not valid,47.0
+IPC Pricol PV,B190B15,Ambient Air Temperature Sensor input circuit short to Battery or open,46.0
+AirBag Bosch AB12,B00201B,Side airbag front LH& RH deployment control circuit resistance above threshold,45.0
+EMS Bosch,P051305,Incorrect Immobilizer Key system Programming Failures,44.0
+VECU Bosch 1.0,P302813,Cabin cooling Evaporator solenoid valve activation line - circuit open,44.0
+FATC BEHR Falcon4,B1F1B15,Solar radiation sensor signal-circuit short to battery or open,42.0
+VECU Bosch 1.0,P304063,Vaccum Pump - circuit / component protection time-out,41.0
+PEPS Marquardt Osprey,B132013,Drive signal for Back Antenna- circuit open,40.0
+AirBag Bosch AB12,B00211B,inflatable curtain airbag RH & LH deployment control 1 circuit resistance above,39.0
+TCU Magnetti Marreili Nano,P082002,Gear lever sensors open circuit or S.C to vsupply,39.0
+EMS Bosch,NO DTC PRESENT,ECU VIN NUMBER MISMATCH,37.0
+AirBag Bosch AB12,B100C13,Left side Right Periphenal sensor circuit open,37.0
+FATC BEHR Falcon4,NO DTC PRESENT,Actuator Motor Calibration Routine Failed,35.0
+Telematics Bosch PV,NO DTC PRESENT,Failed due to unsuccsssful flashing,35.0
+FATC BEHR Falcon4,B1F1F15,Driver Side Air Temperature Feedback Signal - Circuit Short to Battery or Open,33.0
+EMS Bosch XETA Cube Falcon4,P302664,Invalid Data received from TCM signal,33.0
+VECU Bosch 1.0,P301414,Vaccum Pressure Sensor Circuit Short to ground Or Open,33.0
+FATC BEHR Falcon4,B1F2315,Evaporator temprature sensor signal circuit short to battery open,32.0
+AirBag Bosch AB12,NO DTC PRESENT,ECU communication failed,32.0
+IPC Pricol PV/FATC,U040181,Invalid Data Received From Engine Control Module - invalid serial data received,31.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,IBS Not Learnt,31.0
+FATC BEHR Falcon4,B1F1F15,Air Temprature Feedback Signal-Circuit short to Battery Or Open,31.0
+AirBag Bosch AB12,B100E13,Frontal  Impact Left sensor - Circuit open,30.0
+ABS Bosch 9.3,C003714,Rear left wheel speed sensor open/short to GND,29.0
+BCM Hella,C004012,Brake Pedal Test Failed,29.0
+VECU Bosch 1.0,P30B415,AC Charging Inlet Temperature Sensor on line Connection circuit Short to Battery or Open,28.0
+AirBag Bosch AB12,B00721B,Passenger retractor pretensioner deployment control circuit resistance above threshold,28.0
+EPAS MANDO PV,NO DTC PRESENT,ECU Communication Failed,28.0
+IHU Harman,B1C4B13,LVDS connector circuit open,27.0
+FATC BEHR Falcon4,NO DTC PRESENT,Before power latch universal clear DTC failed,27.0
+Telematics Bosch PV,NO DTC PRESENT,ECU Communication Failed,27.0
+VECU Bosch 1.0,U016408,AC and heater function is affected(HVAC CAN messages are not received at VECU),26.0
+EPAS MANDO PV,NO DTC PRESENT,Before power latch universal clear DTC failed,26.0
+EMS Bosch XETA Cube Falcon4,U132408,Diagonastic fault check for IBS node time out,26.0
+AirBag Bosch AB12,B10361B,High Voltage Battery Disconnect Deployment Control Circui Resistance above threshold,26.0
+EMS Bosch XETA Cube Falcon4,P302664,Eng stop req PlausErr of CAN received frame TCU - signal plausibility failure,26.0
+VECU Bosch 1.0,NO DTC PRESENT,OBC Wake Up Command Writing failed,25.0
+AirBag Bosch AB12,B104452,ECU Flring Disabled - Not Activated,23.0
+BCM Hella,B226709,Emergency HW path failure- component Failures,23.0
+FATC BEHR Falcon4,B1F5615,PTC Temprature Sensor Signal Circuit Short To Battery Open,22.0
+BCM Hella,B163906,Module ECM/PCM & BCM handshake failed - Algorithm Based Failures,22.0
+ABS Bosch 9.3,C003414,Front Right Wheel Speed Sensor Open / Short to ground,22.0
+AirBag Bosch AB12,B00701B,Driver retractor pretensioner deployment control circuit resistance above threshold,21.0
+IPC Pricol PV,NO DTC PRESENT,Parameter part number for Instrument cluster parameter reading failed,21.0
+AirBag Bosch AB12,B00d514,Restraint system passenger airbag indicator circuit short to ground,20.0
+IHU Visteon MID,U015908,Lost communication With Parking Assist Control Module A bus signal / message Failure,20.0
+IHU Harman,B1C2013,Steering wheel Controls Parameter reading failed,20.0
+Telematics MMI 1.0,NO DTC PRESENT,ECU Communication Failed,19.0
+AirBag Bosch AB12,B101014,Front Deployment crash no sub type information,19.0
+AirBag Bosch AB12,B100B12,Passenger Deactivation switch Circuit short to battery,18.0
+AirBag Bosch AB12,B10341B,Invalid CAN node selection,18.0
+AirBag Bosch AB12,B00041B,Driver Knee Airbag Deplyment Control Circuit Resistance Above Threshold,17.0
+EMS Bosch XETA Cube Falcon4,P044413,Evaporator Emission system Purge Control valve circuit open,17.0
+FATC BEHR Falcon4,NO DTC PRESENT,Start Actuator Motor Calibration Routine Failed,17.0
+IHU Harman,NO DTC PRESENT,Before power latch universal clear DTC failed,17.0
+VECU Bosch 1.0,NO DTC PRESENT,"Neutral Reading Failed,Drive Reading Failed",16.0
+ABS Bosch 9.3,C003712,Left rear wheel speed sensor circuit short to Battery,16.0
+EMS Bosch XETA Cube Falcon4,U016431,Lost communication nwith Hvac Control module no signal,16.0
+EMS Bosch XETA Cube Falcon4,P051305,Incorrect Immobilizer Key system Programming Failures,16.0
+BCM Hella,NO DTC PRESENT,Read  DTC failed,16.0
+VECU Bosch 1.0,P30B615,AC Charging Inlet temperature Sensor on Netural connection circuit short to battery or open,16.0
+AirBag Bosch AB12,B10351B,Passenger Seat Belt Anchor Pretensioner Deployment Control Circuit Resistance Above Threshold,15.0
+VECU Bosch 1.0,P302D86,HV Battery Cooling Pump -Low fluid level,15.0
+BCM Hella,B224A15,Right stop lamp circuit short to battery,15.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,Before power latch universal clear DTC failed,15.0
+EMS Bosch XETA Cube Falcon4,P1C0615,Neutral gear sensor voltage not plausible high circuit short to battery open,14.0
+Telematics Bosch PV,U300616,Description not available,14.0
+IPC Pricol PV,U010008,Lost communication with ECM/PCM A BUS signal/message failure,14.0
+FATC BEHR Falcon4,NO DTC PRESENT,ECU Communication Failed,14.0
+TPMS,NO DTC PRESENT,ECU Communication Failed,14.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,Clutch pedal teat failed,14.0
+AirBag Bosch AB12,B10341B,Driver Seat Belt Anchor Pretensioner Deployment Control Circuit Rsistance Above Threshold,14.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,Not Started,14.0
+VECU Bosch 1.0,P303F13,Telematics ECU Hardware Wakeup activation line - circuit open,13.0
+ESP Bosch 9.3,NO DTC PRESENT,Before power latch universal clear DTC failed,13.0
+EPAS MANDO PV,U010008,Lost communication with ECM/PCM A BUS signal/message failure,13.0
+BCM Hella,NO DTC PRESENT,Before power latch universal clear DTC failed,13.0
+ABS Bosch 9.3,NO DTC PRESENT,Reset ECU Failed,13.0
+VECU Bosch 1.0,P303386,Traction cooling pump- low fluid level,12.0
+BCM Hella,B165306,LBIBS Module Transponder Key Authentication failure - Algorithm Based failure,12.0
+VECU Bosch 1.0,P308568,E drive MCU level 3 Fault CAN signal Received By VECU Event Information,12.0
+VECU Bosch 1.0,P300815,power distribution unit positive bushbar thermistor circuit short to battery,12.0
+VECU Bosch 1.0,P304168,VECU received BMS derate Flag CAN signal From BMS,12.0
+IPC Pricol PV,U130908,Lost Communication With Antilock Braking System/Electronic Stability- Program (ABS/ESP) Control Module,11.0
+VECU Bosch 1.0,P308113,VECU PWM output line to Radiator fan controller circuit open,11.0
+IHU Visteon MID,B1C5E13,RVC/DMS Camera output Power circuit open,11.0
+IPC Pricol PV,NO DTC PRESENT,Before power latch universal clear DTC failed,11.0
+IHU Visteon MID,U016408,Lost communication with HVAC control mopdule BUS signal,11.0
+VECU Bosch 1.0,U132C08,Lost communication with gear selector switch module Bus Signal,11.0
+BCM Hella,B250311,Reverse gear selection switch circuit short to ground,11.0
+AirBag Bosch AB12,B00101B,Passenger Airbag Deployment Control Circuit Resistance Above Threshold,10.0
+TCU Magnetti Marreili Nano,NO DTC PRESENT,Brake Pedal Test Failed,10.0
+EMS Bosch XETA Cube Falcon4,P070314,Brake Switch B circuit short to ground or open,10.0
+VECU Bosch 1.0,P306285,Interlock Charge Plug signal above allowable range,10.0
+VECU Bosch 1.0,P30B015,Regan Switch sensor input to VECU circuit short to battery or open,10.0
+ABS Mando,C003A14,Rear Right wheel speed sensor open/short to GND,9.0
+VECU Bosch 1.0,NO DTC PRESENT,Fleet Vehicle Forward Speed Limit Parameter mismatch,9.0
+VECU Bosch 1.0,P300E15,Brake Pedal sensor 2 circuit short to ground,9.0
+PEPS Marquardt Osprey,NO DTC PRESENT,Before power latch universal clear DTC failed,9.0
+ESCL Marquardt  Osprey,NO DTC PRESENT,Before power latch universal clear DTC failed,9.0
+EPAS MANDO PV,U130908,Lost Communication With Antilock Braking System/Electronic Stability- Program (ABS/ESP) Control Module,9.0
+BCM Hella,B225C09,Combined switch failure component failure,8.0
+BCM Hella,B160914,Door Lock Relay circuit short to ground or open,8.0
+IHU Harman,NO DTC PRESENT,ECU Start Diagnostics Failed,8.0
+BCM Hella,NO DTC PRESENT,AES key mismatch,7.0
+IPC Pricol PV,B190915,Fuel Level Sensor Input Circuit Short to battery Or Open,7.0
+FATC BEHR Falcon4,NO DTC PRESENT,Air temprature Actuator  motor missing calibration,7.0
+VECU Bosch 1.0,P301785,DC charging Inlet temprature sensor  signal above allowable range,7.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,Accelarator Test Failed,7.0
+IHU Harman,NO DTC PRESENT,ECU VIN NUMBER MISMATCH,7.0
+ESP Bosch 9.3,NO DTC PRESENT,ECU communication failed,7.0
+VECU Bosch 1.0,U015108,Lost Communication Restraints Control Module Bus Signal /Message Failure,7.0
+BCM Hella,B222D12,Low beam switch circuit short to battery,7.0
+BCM Hella,B222715,Left stop lamp circuit short to battery,7.0
+IHU Harman,B1C5D11,Description not available,7.0
+Telematics Bosch PV,U003713,Vehicle communication BUS B circuit open,7.0
+FATC BEHR Falcon4,B1F2814,Blower Motor Diagonastic Feedback Circuit Short to Ground or Open,6.0
+BCM Hella,B221712,Hazard Switch Circuit short to Battery,6.0
+TPMS,NO DTC PRESENT,Application Software Identification parameter Reading failed,6.0
+IPC Pricol PV,U013108,Lost communication with Power Steering Control Module BUS signal/message failure,6.0
+PEPS Marquardt Osprey,B132113,Drive signal for Front Antenna- circuit open,6.0
+EMS Bosch XETA Cube Falcon4,P061513,Starter Relay A circuit open,6.0
+BCM Hella,NO DTC PRESENT,Reset ECU Failed,6.0
+IHU Visteon MID,NO DTC PRESENT,Clear DTC failed,6.0
+TCU Magnetti Marreili Nano,P071002,Engine Water Temprature Signal Not valid,6.0
+VECU Bosch 1.0,U132B08,Lost Communication With Compressor Module Bus signal/Message failure,6.0
+BCM Hella,NO DTC PRESENT,ECU communication failed,6.0
+BCM Hella,B221F15,Left Turn Fog Lamp Circuit short to battery,5.0
+BCM Hella,B192513,Proximity Sensor Rear LH Input Circuit Open,5.0
+IHU Harman,NO DTC PRESENT,Software version number mismatch,5.0
+PEPS Marquardt Osprey,U160981,Invalid data Received fron anti lock braking system electric stabilty Program (ABS/ESP) control module,5.0
+BCM Hella,B224215,Right Turn Fog Lamp Circuit short to battery,5.0
+BCM Hella,B223811,Rear De Fogger Switch- Signal Short to Ground,5.0
+VECU Bosch 1.0,P302F13,PTC Contractor low side activation line circuit open,5.0
+ESCL Marquardt  Osprey,U161781,Invalid data received from PEPS invalid serial data received,5.0
+EMS Bosch XETA Cube Falcon4,P001313,B camshaft position  Actuator A control circuit  Open Bank 1 circuit open,5.0
+EMS Bosch XETA Cube Falcon4,P001013,A Camshaft position Actuator A control circuit Open Bank 1 circuit open,5.0
+VECU Bosch 1.0,P308468,High Voltage Battery Level 3 Fault CAN Signal Received by VECU  Event Information,5.0
+BMS gotion 1.0,P30C487,Smoke sensor CAN Loss - Missing message,5.0
+EMS Bosch XETA Cube Falcon4,P01A115,DFC PTNG Electric Max Error For CNG Tank Pressure Sensor Tanl pressure Sensor short to battery,5.0
+AirBag Bosch AB12,B10351B,Passenger Seat Belt Anchor pretensioner Deployment Control Circuit Resistance above threshold,5.0
+IPC Pricol PV,B193F4A,VIN number mismatch to ODH learning -incorrect component installed,4.0
+IHU Harman,NO DTC PRESENT,ECU software mismatch,4.0
+BCM Hella,B221A12,Head Lamp On Signal Circuit Short To Battery,4.0
+BCM Hella,B225C09,Combination Switch Failure Component Failure,4.0
+BCM Hella,U161481,Odometer Storage Fault Invalid Serial Data Received,4.0
+EMS Bosch XETA Cube Falcon4,P012014,Throttle /Pedal position sensor/Switch A circuit short to Ground or Open,4.0
+ABS Mando,C003114,Front Left Wheel Speed Sensor Open / Short to ground,4.0
+ABS Mando,U010008,Lost communication with ECM/PCM A BUS signal/message failure,4.0
+MCU Shanghai 1.0,P130100,HV under/over voltage fault,4.0
+VECU Bosch 1.0,U132908,Lost Communication With DC Dc Converter Module Bus Signal/Message Failure,4.0
+EMS Bosch XETA Cube Falcon4,P081713,Crank Inhibit Starter Relay open Circuit circuit open,4.0
+VECU Bosch 1.0,U016408,Lost Communication With HVAC Control Module Bus Signal /Message Failure,4.0
+IHU Harman,B1C4D08,Button Panel LIN- BUS Signal /Message Failure,4.0
+FATC BEHR Falcon4,B1F3A09,Climate Control Panel Off switch Component Failure,4.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,AES key mismatch,4.0
+VECU Bosch 1.0,U012108,Lost Communication With Antilock Braking System/Electronic Stability- Program (ABS/ESP) Control Module,4.0
+BMS gotion 1.0,NO DTC PRESENT,Failed due to unsuccsssful flashing,4.0
+EMS Bosch XETA Cube Falcon4,P064513,A/C Clutch Realy Control Circuit open,4.0
+TCU Magnetti Marreili Nano,P174F03,Clutch closed position selftune Min type Error,4.0
+VECU Bosch 1.0,P300612,Accelerator Pedal Sensor 2 CirCuit Short to ground,4.0
+BCM Hella,U100011,Accessory  Powermode Input- Circuit Short to Ground,4.0
+TCU Magnetti Marreili Nano,P140107,Level2 intake vention safety input failure,4.0
+TCU Magnetti Marreili Nano,P082303,Gear Lever Sensor Circuit Signalin Mediumrange,4.0
+IHU Harman,NO DTC PRESENT,Parameter Part number for infortainment head unit Parameter mismatch,4.0
+TCU Magnetti Marreili Nano,P290602,Actual Engine torque Signal not valid wisher engine Torque,3.0
+PEPS Marquardt Osprey,U010108,Lost communication with TCM BUS siganl,3.0
+TCU Magnetti Marreili Nano,P290604,Wished engine Torque signal not valid,3.0
+PEPS Marquardt Osprey,B164B14,Crank Relay feedback-circuit short to ground open,3.0
+PEPS Marquardt Osprey,B164B14,Crank relay feedback circuit short to ground or open,3.0
+TCU Magnetti Marreili Nano,P080504,"Clutch Position Sensing PWM DUTY low (Sensor Algorytm Error,Sensor problem,Magnet Lost)",3.0
+BCM Hella,B222E12,Main Beam Switch- Circuit Short to Battery,3.0
+FATC BEHR Falcon4,U015508,Lost Communication With Instrument Panel Cluster Control Module Bus Signal /Message failure,3.0
+IPC Pricol PV,U016408,Lost communication with HVAC Control Module BUS signal/message failure,3.0
+VECU Bosch 1.0,NO DTC PRESENT,Reverse reading failed,3.0
+AirBag Bosch AB12,NO DTC PRESENT,Configuration Parameter Reading Failed,3.0
+FATC BEHR Falcon4,NO DTC PRESENT,Parameter Mismatch AQI Feature Activation,3.0
+BCM Hella,U131508,Lost communication with PEPS BUS signal/message failure,3.0
+BCM Hella,U100F12,Ignition PowerMode Input- Circuit Short to Battery,3.0
+AirBag Bosch AB12,B103A12,Rear passenger Seat belt buckle switch circuit short to battery,3.0
+BCM Hella,B132612,Express down output - Circuit Short to Battery,3.0
+FATC BEHR Falcon4,U132008,Description not available,3.0
+EMS Bosch XETA Cube Falcon4,P011215,Intake Air temprature sensor 1 circuit low bank 1 Circuit short to battery open,3.0
+VECU Bosch 1.0,NO DTC PRESENT,Parameter reading failed,2.0
+TCU Magnetti Marreili Nano,P290603,Engine loss torque signal not valid,2.0
+TCU Magnetti Marreili Nano,P290702,Engine Maximum torque signal not valid,2.0
+BCM Hella,B162D14,Tailgate Unlock Signal- Circuit Short To Ground Open,2.0
+AirBag Bosch AB12,B103E06,Mismatch in Algo and Sensor Configuration Algorithm Based Failure,2.0
+VECU Bosch 1.0,U132208,Lost Communication With Battery Management System (BMS) module,2.0
+BCM Hella,B223612,Position Lamp Switch - Circuit Short to Battery,2.0
+VECU Bosch 1.0,P301785,DC Charging Inlet temperature Sensor on Netural connection circuit short to battery or open,2.0
+AirBag Bosch AB12,NO DTC PRESENT,ECU VIN NUMBER MISMATCH,2.0
+AirBag Bosch AB12,NO DTC PRESENT,Parameter Part Number For Restraint Control Module Parameter reading Failed,2.0
+ABS Mando,U160456,Control Module Configuration Invalid/ Incompatible Configuration,2.0
+FATC BEHR Falcon4,B1F1B15,BCM Configuration Error Invalid / Incompatible Configuration,2.0
+IHU Visteon MID,B190B15,Ambient Air Temperature Sensor input circuit short to Battery or open,2.0
+PEPS Marquardt Osprey,B132212,Hardwired wakeup input circuit short to battery,2.0
+FATC BEHR Falcon4,NO DTC PRESENT,Reset ECU Failed,2.0
+IHU Visteon MID,NO DTC PRESENT,Before power latch universal clear DTC failed,2.0
+BMS gotion 1.0,P307273,BMS Neg Main Rly HW Third Level Fault,2.0
+BMS gotion 1.0,P307373,Description not available,2.0
+IPC Pricol PV,U012708,Lost Communication With Tire Pressure Monitor Module- Bus Signal/Message Failure,2.0
+FATC BEHR Falcon4,B1F2A12,Cabin Temperature sensor circuit short to battery,2.0
+EMS Bosch XETA Cube Falcon4,P010515,Manifold Absolute pressure barometric pressure circuit high Circuit short to battery or open,2.0
+IPC Pricol PV,U131508,Lost Communication with Passive Entry Passive Start(PEPS)-Bus signal,2.0
+IPC Pricol PV,U132008,Lost Communication With VCU,2.0
+BCM Hella,U160981,Invalid Data Received From invalid Data Received From Antilock Baking System/Electronic Stability Program,2.0
+EMS Bosch XETA Cube Falcon4,P011815,Engine coolant  Temperature sensor 1 circuit low,2.0
+MCU Shanghai 1.0,NO DTC PRESENT,Failed due to unsuccsssful flashing,2.0
+IPC Pricol PV,U160455,Control Module Configuration - not Configured,2.0
+EMS Bosch XETA Cube Falcon4,U042381,Invalid  Data Received From instrument Panel Cluster Control Module Invalid serial Data Received,2.0
+ESP Bosch 9.3,NO DTC PRESENT,"ESP Vehicle Drive Configuration Parameter Reading Failed, Parameter Part number For ESP parameter reading failed",2.0
+EMS Bosch XETA Cube Falcon4,P018315,CNG Rall Temprature sensor Circuit High circuit short to battery,2.0
+EMS Bosch XETA Cube Falcon4,P048113,Fan 2 Control Circuit Open,2.0
+PEPS Marquardt Osprey,B164A14,IGN relay feedback circuit short to ground,2.0
+PEPS Marquardt Osprey,NO DTC PRESENT,ECU Start Diagonastic Failed,2.0
+AirBag Bosch AB12,B101055,Crash Output HW - Not Configurated,1.0
+BMS gotion 1.0,NO DTC PRESENT,ECU COMMUNICATION FAILED,1.0
+EMS Bosch XETA Cube Falcon4,U0121-31,Lost Communication With Antilock Braking System/Electronic Stability- Program (ABS/ESP) Control Module,1.0
+BMS gotion 1.0,P12311A,BMS Inslation Fault Third level alam Circuit Resistance below Threshold,1.0
+BMS gotion 1.0,P306B1C,BMS Cell Voltage Sampling fault discharging First Level Fault,1.0
+EMS Bosch XETA Cube Falcon4,U014031,Frame Is Not Recived Within The Stipulated Time Period,1.0
+BMS gotion 1.0,P306C1C,BMS Cell Voltage Sampling fault charging second Level Fault,1.0
+ESP Bosch 9.3,NO DTC PRESENT,Inertial Sensor Calibration failed Reset ECU failed,1.0
+VECU Bosch 1.0,P304709,MCU Contactor Weld  Component Failure,1.0
+VECU Bosch 1.0,P304B09,HV fuse of MCU Component Failures,1.0
+ABS Mando,NO DTC PRESENT,Parameter Part Number For ABS Parameter Reading Failed,1.0
+EPAS MANDO PV,C130401,Description not available,1.0
+EMS Bosch XETA Cube Falcon4,NO DTC PRESENT,User Customization Settings Parameter Mismatch,1.0
+EMS Bosch XETA Cube Falcon4,P019315,DFC Max Error Natural gas Rail Pressure Sensor Circuit High- Circuit Short to Ground,1.0
+VECU Bosch 1.0,P308C1A,Isolation Resistance Value Recived From BMS Over4 CAN - CirCuit,1.0
+ABS Mando,NO DTC PRESENT,Before power latch universal clear DTC failed,1.0
+AirBag Bosch AB12,NO DTC PRESENT,Failed due to unsuccsssful flashing,1.0
+TCU Magnetti Marreili Nano,NO DTC PRESENT,ECU VIN NUMBER MISMATCH,1.0
+AirBag Bosch AB12,NO DTC PRESENT,Passenger SBR Switch & Chime parameter Reading Failed,1.0
+BCM Hella,B224711,Right Position Lamps- Circuit Short to Ground,1.0
+PEPS Marquardt Osprey,U042281,Invalid Data Received From Body Control Module - Invalid Serial Data Received,1.0
+PEPS Marquardt Osprey,NO DTC PRESENT,Vehicle Manufacturer ECU Software Version PEPS Parameter Mismatch ECU,1.0
+PEPS Marquardt Osprey,NO DTC PRESENT,Application Software Identification PEPS parameter Reading failed,1.0
+PEPS Marquardt Osprey,B164914,Acc Relay Feedback Circuit open,1.0
+BCM Hella,B22411,Left Position Lamps- Circuit Short to Ground,1.0
+TCU Magnetti Marreili Nano,P1C2702,ASR Brake Control Active Signal Not Valid,1.0
+TCU Magnetti Marreili Nano,P1C2A02,Vehicle Dynamics Control Signal Not Valid,1.0
+TCU Magnetti Marreili Nano,P290302,Gas pedal not valid,1.0
+PEPS Marquardt Osprey,B164405,No UID Pairing Done System Programming Failure,1.0
+PEPS Marquardt Osprey,B13F13,Drive signal for Right Antenna- circuit open,1.0
+EMS Bosch XETA Cube Falcon4,P210113,Throttle Actuator Control Motor Circuit Range Perfomance circuit open,1.0
+TCU Magnetti Marreili Nano,U160900,Hill Hold Signal Not valid,1.0
+IPC Pricol PV,U040181,Invalid data received From ECM/PCM invalid serial data received,1.0
+BCM Hella,U13388,LIN Bus B bus off,1.0
+IPC Pricol PV,U023608,Lost Communication With Column Lock Module (ESCL)- Bus Signal,1.0
+BCM Hella,B1F0011,Accessory delay signal circuit short to ground,1.0
+IPC Pricol PV,U010108,Lost communication with TCM BUS siganl,1.0
+BCM Hella,C132900,Tuning set variant is not selected,1.0
+IPC Pricol PV,NO DTC PRESENT,CNG signal configuration parameter reading failed,1.0
+BCM Hella,NO DTC PRESENT,"Left Antenna Failure Limited Function Config Parameter Reading Failed ,Read DTC failed",1.0
+BCM Hella,NO DTC PRESENT,OBC Wake Up Command Writing failed,1.0
+VECU Bosch 1.0,P240300,VCU Internal Error - No Sub Type Information,1.0
+BCM Hella,U101012,Key In Signal - Circuit Short to battery,1.0
+TCU Magnetti Marreili Nano,NO DTC PRESENT,Hydraulic sensor pressure reading failed,1.0
+AirBag Bosch AB12,NO DTC PRESENT,REAR SBR TELL TALE and Chime Parameter Reading Failed,1.0
+BCM Hella,U132087,Lost Communication With Vehicle Control Unit (VCU) - Missing Calibration,1.0
+EMS Bosch XETA Cube Falcon4,P217600,Throttle Actuator Control Motor Circuit Range Perfomance circuit open,0.0
