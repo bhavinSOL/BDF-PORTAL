@@ -1,0 +1,17 @@
+﻿Line,ECU Types
+UB1,BCM Hella 
+TRIM1,EPAS MANDO PV
+TRIM2,EMS Bosch XETA Cube Falcon4
+CP,ESP Bosch 9.3
+UB2,Airbag Bosch AB12
+UB3,IHU HARMAN
+UB3A,IPC Pricol PV  
+,ABS Bosch 9.3
+,FATC BEHR Falcon4
+,VECU Bosch 1.0
+,3IN1 VALEO 1.0
+,DC-DC Converter Valeo
+,MCU Shanghal 1.0
+,BMS OPS PV
+,Telematics MMI 1.0 
+,TCU Magnetti Marreili Nano
