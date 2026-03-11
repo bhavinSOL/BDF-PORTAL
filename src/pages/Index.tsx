@@ -10,10 +10,10 @@ import { loadExcelData } from "@/lib/loadExcelData";
 import { exportCSV, exportExcel, exportChartImage } from "@/lib/exportUtils";
 import { toast } from "@/hooks/use-toast";
 
-type FilterType = "today" | "weekly" | "monthly" | "custom" | "all";
+type FilterType = "today" | "weekly" | "monthly" | "custom" | "all" | "old";
 
 const Index = () => {
-  const [filter, setFilter] = useState<FilterType>("monthly");
+  const [filter, setFilter] = useState<FilterType>("all");
   const [lineFilter, setLineFilter] = useState("all");
   const [sectionFilter, setSectionFilter] = useState("all");
   const [startDate, setStartDate] = useState<Date | undefined>();

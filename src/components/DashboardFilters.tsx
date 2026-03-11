@@ -8,7 +8,7 @@ import { CalendarIcon, Download } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
-type FilterType = "today" | "weekly" | "monthly" | "custom" | "all";
+type FilterType = "today" | "weekly" | "monthly" | "custom" | "all" | "old";
 
 interface DashboardFiltersProps {
   filter: FilterType;
@@ -32,6 +32,7 @@ const filterButtons: { label: string; value: FilterType }[] = [
   { label: "Today", value: "today" },
   { label: "Weekly", value: "weekly" },
   { label: "Monthly", value: "monthly" },
+  { label: "Old Data", value: "old" },
   { label: "All Data", value: "all" },
   { label: "Custom", value: "custom" },
 ];
@@ -90,7 +91,7 @@ export function DashboardFilters({
       )}
 
       {/* Line Filter */}
-      <Select value={lineFilter} onValueChange={setLineFilter}>
+      {/* <Select value={lineFilter} onValueChange={setLineFilter}>
         <SelectTrigger className="w-[130px] h-8 text-xs">
           <SelectValue placeholder="All Lines" />
         </SelectTrigger>
@@ -99,7 +100,7 @@ export function DashboardFilters({
             <SelectItem key={l} value={l}>{l === "all" ? "All Lines" : l}</SelectItem>
           ))}
         </SelectContent>
-      </Select>
+      </Select> */}
 
       {/* Section Filter */}
       <Select value={sectionFilter} onValueChange={setSectionFilter}>

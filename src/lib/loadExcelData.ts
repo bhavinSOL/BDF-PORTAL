@@ -3,8 +3,8 @@ import type { BDFIssue } from "@/data/mockData";
 /**
  * Loads ECU_Problem_Analysis.csv and converts rows into BDFIssue[] entries.
  * Each CSV row has a "Total Occurrences" count — we expand that into
- * individual entries spread across the last 30 days so the dashboard
- * date-filters (today / weekly / monthly) work correctly.
+ * individual entries. These entries have no real date (date = "") and
+ * are shown under the "Old Data" filter on the dashboard.
  */
 
 function parseCSVLine(line: string): string[] {
@@ -36,20 +36,6 @@ function getECUCategory(ecu: string): string {
   return first || ecu;
 }
 
-/** Pre-compute date strings for the last N days to avoid repeated date-fns calls */
-function buildDatePool(days: number): string[] {
-  const pool: string[] = [];
-  const now = Date.now();
-  for (let d = 0; d < days; d++) {
-    const dt = new Date(now - d * 86_400_000);
-    const y = dt.getFullYear();
-    const m = String(dt.getMonth() + 1).padStart(2, "0");
-    const day = String(dt.getDate()).padStart(2, "0");
-    pool.push(`${y}-${m}-${day}`);
-  }
-  return pool;
-}
-
 export async function loadExcelData(): Promise<BDFIssue[]> {
   const res = await fetch("/data/ECU_Problem_Analysis.csv");
   if (!res.ok) throw new Error(`Failed to fetch CSV: ${res.status}`);
@@ -68,7 +54,6 @@ export async function loadExcelData(): Promise<BDFIssue[]> {
     h.includes("total occurrences") || h.includes("occurrences")
   );
 
-  const datePool = buildDatePool(30);
   const issues: BDFIssue[] = [];
   let id = 1;
 
@@ -92,7 +77,7 @@ export async function loadExcelData(): Promise<BDFIssue[]> {
         issue: dtcCode || `BDF-${String(id).padStart(4, "0")}`,
         problem: desc,
         mark: id % 3 === 0 ? "Solved" : "Not Solved",
-        date: datePool[id % datePool.length],
+        date: "",
       });
     }
   }

@@ -40,6 +40,71 @@ function saveEntries(entries: BDFIssue[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
 }
 
+/** Save a single entry to the backend API (auto-saves to CSV file) */
+async function saveEntryToServer(entry: BDFIssue): Promise<void> {
+  try {
+    await fetch("/api/entries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        issue: entry.issue,
+        line: entry.line,
+        section: entry.section,
+        problem: entry.problem,
+        mark: entry.mark,
+        date: entry.date,
+        vin: entry.vin || "",
+        rootCause: entry.rootCause || "",
+        solution: entry.solution || "",
+      }),
+    });
+  } catch {
+    // Silently fail — localStorage is the fallback
+  }
+}
+
+/** Load entries from the backend API */
+async function loadEntriesFromServer(): Promise<BDFIssue[]> {
+  try {
+    const res = await fetch("/api/entries");
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.map((e: Record<string, string>, i: number) => ({
+      id: 60000 + i,
+      line: e.line || "",
+      section: e.section || "",
+      issue: e.issue || `BDF-${String(60000 + i).padStart(4, "0")}`,
+      problem: e.problem || "",
+      mark: (e.mark || "Not Solved") as "Solved" | "Not Solved",
+      date: normalizeDate(e.date || ""),
+      vin: e.vin || undefined,
+      rootCause: e.rootCause || undefined,
+      solution: e.solution || undefined,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/** Normalize date strings to yyyy-MM-dd format */
+function normalizeDate(d: string): string {
+  if (!d) return "";
+  // Already yyyy-MM-dd
+  if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  // M/D/YYYY or MM/DD/YYYY
+  const parts = d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (parts) {
+    const [, month, day, year] = parts;
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  // Try Date parse as last resort
+  const parsed = new Date(d);
+  if (!isNaN(parsed.getTime())) {
+    return format(parsed, "yyyy-MM-dd");
+  }
+  return d;
+}
+
 function parseCSVLine(line: string): string[] {
   const fields: string[] = [];
   let current = "";
@@ -73,10 +138,63 @@ function csvRowToEntry(cols: string[], headers: string[], baseId: number): BDFIs
     issue: get("issue") || `BDF-${String(baseId).padStart(4, "0")}`,
     problem,
     mark: (get("status") || "Not Solved") as "Solved" | "Not Solved",
-    date: date || format(new Date(), "yyyy-MM-dd"),
+    date: normalizeDate(date) || format(new Date(), "yyyy-MM-dd"),
     rootCause: get("root cause") || undefined,
     solution: get("solution") || undefined,
+    vin: get("vin") || undefined,
   };
+}
+
+interface LineECU {
+  line: string;
+  ecu: string;
+}
+
+async function loadLineCSV(): Promise<LineECU[]> {
+  try {
+    const res = await fetch("/data/Line.csv");
+    if (!res.ok) return [];
+    const text = await res.text();
+    const rawLines = text.split(/\r?\n/).filter((l) => l.trim());
+    if (rawLines.length < 2) return [];
+    const headers = parseCSVLine(rawLines[0]).map((h) => h.toLowerCase());
+    const lineIdx = headers.findIndex((h) => h.includes("line"));
+    const ecuIdx = headers.findIndex((h) => h.includes("ecu"));
+    const results: LineECU[] = [];
+    for (let r = 1; r < rawLines.length; r++) {
+      const cols = parseCSVLine(rawLines[r]);
+      const line = (cols[lineIdx] || "").trim();
+      const ecu = (cols[ecuIdx] || "").trim();
+      if (ecu) results.push({ line, ecu });
+    }
+    return results;
+  } catch {
+    return [];
+  }
+}
+
+/** Match an ECU name from ECU_Problem_Analysis to a Line via Line.csv data */
+function findLineForECU(ecu: string, lineData: LineECU[]): string {
+  const ecuLower = ecu.toLowerCase().trim();
+  // Exact match (case-insensitive)
+  const exact = lineData.find((d) => d.ecu.toLowerCase().trim() === ecuLower);
+  if (exact) return exact.line;
+  // Check if Line.csv ECU starts with the analysis ECU or vice versa
+  for (const d of lineData) {
+    const dLower = d.ecu.toLowerCase().trim();
+    if (dLower.startsWith(ecuLower) || ecuLower.startsWith(dLower)) {
+      return d.line;
+    }
+  }
+  // Split by "/" and match each part's first word
+  const ecuParts = ecu.split("/").map((p) => p.trim().split(/\s+/)[0].toLowerCase());
+  for (const d of lineData) {
+    const dFirstWord = d.ecu.trim().split(/\s+/)[0].toLowerCase();
+    if (ecuParts.includes(dFirstWord)) {
+      return d.line;
+    }
+  }
+  return "";
 }
 
 async function loadInspectorCSV(): Promise<BDFIssue[]> {
@@ -105,25 +223,36 @@ const InspectorEntry = () => {
   const navigate = useNavigate();
   const [entries, setEntries] = useState<BDFIssue[]>([]);
   const [excelData, setExcelData] = useState<BDFIssue[]>([]);
+  const [lineECUData, setLineECUData] = useState<LineECU[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Load Excel data for dropdown options + merge inspector_data.csv with localStorage
+  // Load BDF data, Line.csv, and inspector entries (from API + localStorage)
   useEffect(() => {
-    Promise.all([loadExcelData(), loadInspectorCSV()])
-      .then(([csvData, inspectorCsvData]) => {
+    Promise.all([loadExcelData(), loadInspectorCSV(), loadLineCSV(), loadEntriesFromServer()])
+      .then(([csvData, inspectorCsvData, lineData, serverEntries]) => {
         setExcelData(csvData);
+        setLineECUData(lineData);
 
-        // Merge localStorage entries with inspector_data.csv (deduplicate by problem+date+section)
+        // Merge: server entries + localStorage + inspector CSV (deduplicate)
         const storedEntries = getStoredEntries();
         const seen = new Set<string>();
         const merged: BDFIssue[] = [];
 
-        // localStorage entries take priority (user-created)
-        for (const e of storedEntries) {
+        // Server entries take highest priority (auto-saved)
+        for (const e of serverEntries) {
           const key = `${e.problem}||${e.section}||${e.date}`;
           seen.add(key);
           merged.push(e);
+        }
+
+        // Then localStorage entries
+        for (const e of storedEntries) {
+          const key = `${e.problem}||${e.section}||${e.date}`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            merged.push(e);
+          }
         }
 
         // Add inspector CSV entries that aren't duplicates
@@ -155,9 +284,11 @@ const InspectorEntry = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [rootCause, setRootCause] = useState("");
   const [solution, setSolution] = useState("");
+  const [vin, setVin] = useState("");
   const [entryFilter, setEntryFilter] = useState<"all" | "today">("all");
 
   // Build a mapping: problem → [{line, section}] for auto-fill
+  // Uses ECU_Problem_Analysis.csv for problem→ECU and Line.csv for ECU→Line
   const problemMap = useMemo(() => {
     const map: Record<string, { line: string; section: string }[]> = {};
     const seen = new Set<string>();
@@ -167,27 +298,34 @@ const InspectorEntry = () => {
       if (seen.has(key)) continue;
       seen.add(key);
       if (!map[d.problem]) map[d.problem] = [];
-      map[d.problem].push({ line: d.line, section: d.section });
+      // Resolve line from Line.csv instead of deriving from ECU name
+      const resolvedLine = findLineForECU(d.section, lineECUData);
+      map[d.problem].push({ line: resolvedLine || d.line, section: d.section });
     }
     return map;
-  }, [excelData]);
+  }, [excelData, lineECUData]);
 
   const problems = useMemo(
     () => Object.keys(problemMap).sort(),
     [problemMap]
   );
 
-  // Sections filtered by selected problem (or all if custom/none)
+  // Sections (ECUs) filtered by selected problem or selected line
   const filteredSections = useMemo(() => {
     if (selectedProblem && selectedProblem !== "__custom" && problemMap[selectedProblem]) {
       return [...new Set(problemMap[selectedProblem].map((m) => m.section))].sort();
     }
+    // Use Line.csv ECU types as available sections
+    if (lineECUData.length > 0) {
+      return [...new Set(lineECUData.map((d) => d.ecu))].sort();
+    }
     return [...new Set(excelData.map((d) => d.section).filter(Boolean))].sort();
-  }, [selectedProblem, problemMap, excelData]);
+  }, [selectedProblem, problemMap, lineECUData, excelData]);
 
+  // Lines from Line.csv
   const lines = useMemo(
-    () => [...new Set(excelData.map((d) => d.line).filter(Boolean))].sort(),
-    [excelData]
+    () => [...new Set(lineECUData.map((d) => d.line).filter(Boolean))].sort(),
+    [lineECUData]
   );
 
   const allData = useMemo(() => [...excelData, ...entries], [excelData, entries]);
@@ -228,17 +366,19 @@ const InspectorEntry = () => {
 
   function handleSectionChange(value: string) {
     setSelectedSection(value);
-    // Auto-fill line from the problem→section mapping
+    // Auto-fill line from problemMap or Line.csv
     if (selectedProblem && selectedProblem !== "__custom" && problemMap[selectedProblem]) {
       const match = problemMap[selectedProblem].find((m) => m.section === value);
-      if (match) {
+      if (match?.line) {
         setSelectedLine(match.line);
         return;
       }
     }
-    // Fallback: derive line from the excelData
-    const fromData = excelData.find((d) => d.section === value);
-    if (fromData) setSelectedLine(fromData.line);
+    // Fallback: look up line from Line.csv
+    const lineMatch = findLineForECU(value, lineECUData);
+    if (lineMatch) {
+      setSelectedLine(lineMatch);
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -261,11 +401,13 @@ const InspectorEntry = () => {
       date: format(selectedDate, "yyyy-MM-dd"),
       rootCause: rootCause.trim() || undefined,
       solution: solution.trim() || undefined,
+      vin: vin.trim() || undefined,
     };
 
     const updated = [newEntry, ...entries];
     setEntries(updated);
     saveEntries(updated);
+    saveEntryToServer(newEntry);
 
     toast({ title: "Entry Added", description: `${problemName} logged on ${selectedLine} - ${selectedSection}` });
 
@@ -278,6 +420,7 @@ const InspectorEntry = () => {
     setSelectedDate(new Date());
     setRootCause("");
     setSolution("");
+    setVin("");
   }
 
   function handleDownloadExcel() {
@@ -293,6 +436,7 @@ const InspectorEntry = () => {
         Problem: d.problem,
         Status: d.mark,
         Date: d.date,
+        "VIN No": d.vin || "",
         "Root Cause": d.rootCause || "",
         Solution: d.solution || "",
       }))
@@ -308,10 +452,10 @@ const InspectorEntry = () => {
       toast({ title: "No Entries", description: "No entries to export for selected filter.", variant: "destructive" });
       return;
     }
-    const headers = ["Issue No", "Line", "Section / ECU", "Problem", "Status", "Date", "Root Cause", "Solution"];
+    const headers = ["Issue No", "Line", "Section / ECU", "Problem", "Status", "Date", "VIN No", "Root Cause", "Solution"];
     const rows = displayEntries.map((d) => [
       d.issue, d.line, d.section, d.problem, d.mark, d.date,
-      d.rootCause || "", d.solution || "",
+      d.vin || "", d.rootCause || "", d.solution || "",
     ]);
     const csv = [headers, ...rows].map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
@@ -537,6 +681,17 @@ const InspectorEntry = () => {
                     </Popover>
                   </div>
 
+                  {/* VIN No */}
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium">VIN No</Label>
+                    <Input
+                      placeholder="Enter Vehicle Identification Number"
+                      value={vin}
+                      onChange={(e) => setVin(e.target.value)}
+                      className="h-9 text-sm"
+                    />
+                  </div>
+
                   {/* Root Cause */}
                   <div className="space-y-1.5">
                     <Label className="text-xs font-medium">Root Cause</Label>
@@ -628,6 +783,7 @@ const InspectorEntry = () => {
                         <TableHead className="text-xs">Line</TableHead>
                         <TableHead className="text-xs">Section/ECU</TableHead>
                         <TableHead className="text-xs">Problem</TableHead>
+                        <TableHead className="text-xs">VIN No</TableHead>
                         <TableHead className="text-xs">Status</TableHead>
                         <TableHead className="text-xs">Date</TableHead>
                       </TableRow>
@@ -635,7 +791,7 @@ const InspectorEntry = () => {
                     <TableBody>
                       {displayEntries.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={6} className="text-center text-muted-foreground text-sm py-8">
+                          <TableCell colSpan={7} className="text-center text-muted-foreground text-sm py-8">
                             {entryFilter === "today" ? "No entries for today." : "No entries yet. Use the form to log problems."}
                           </TableCell>
                         </TableRow>
@@ -646,6 +802,7 @@ const InspectorEntry = () => {
                             <TableCell className="text-xs">{entry.line}</TableCell>
                             <TableCell className="text-xs">{entry.section}</TableCell>
                             <TableCell className="text-sm font-medium">{entry.problem}</TableCell>
+                            <TableCell className="text-xs font-mono">{entry.vin || "-"}</TableCell>
                             <TableCell>
                               <Badge
                                 variant={entry.mark === "Solved" ? "default" : "destructive"}

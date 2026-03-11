@@ -11,6 +11,7 @@ export interface BDFIssue {
   rootCause?: string;
   solution?: string;
   imageUrl?: string;
+  vin?: string;
 }
 
 const lines = ["Line 1", "Line 2", "Line 3", "Line 4", "Line 5"];
@@ -102,7 +103,7 @@ export const TOTAL_PRODUCTION = 5000; // monthly production volume
 
 export function getFilteredData(
   data: BDFIssue[],
-  filter: "today" | "weekly" | "monthly" | "custom" | "all",
+  filter: "today" | "weekly" | "monthly" | "custom" | "all" | "old",
   lineFilter?: string,
   sectionFilter?: string,
   startDate?: Date,
@@ -113,21 +114,24 @@ export function getFilteredData(
 
   if (filter === "all") {
     // No date filtering — show everything
+  } else if (filter === "old") {
+    // Show entries without a date (historical/ECU_Problem_Analysis data)
+    filtered = filtered.filter((d) => !d.date);
   } else if (filter === "today") {
     const todayStr = format(today, "yyyy-MM-dd");
     filtered = filtered.filter((d) => d.date === todayStr);
   } else if (filter === "weekly") {
     const weekStart = format(startOfWeek(today, { weekStartsOn: 1 }), "yyyy-MM-dd");
     const todayStr = format(today, "yyyy-MM-dd");
-    filtered = filtered.filter((d) => d.date >= weekStart && d.date <= todayStr);
+    filtered = filtered.filter((d) => d.date && d.date >= weekStart && d.date <= todayStr);
   } else if (filter === "monthly") {
     const monthStart = format(startOfMonth(today), "yyyy-MM-dd");
     const todayStr = format(today, "yyyy-MM-dd");
-    filtered = filtered.filter((d) => d.date >= monthStart && d.date <= todayStr);
+    filtered = filtered.filter((d) => d.date && d.date >= monthStart && d.date <= todayStr);
   } else if (filter === "custom" && startDate && endDate) {
     const s = format(startDate, "yyyy-MM-dd");
     const e = format(endDate, "yyyy-MM-dd");
-    filtered = filtered.filter((d) => d.date >= s && d.date <= e);
+    filtered = filtered.filter((d) => d.date && d.date >= s && d.date <= e);
   }
 
   if (lineFilter && lineFilter !== "all") {
@@ -189,6 +193,7 @@ export function getSolvedUnsolved(data: BDFIssue[]) {
 export function getWeeklyTrend(data: BDFIssue[]) {
   const weeks: Record<string, number> = {};
   data.forEach((d) => {
+    if (!d.date) return;
     const weekStart = format(startOfWeek(new Date(d.date), { weekStartsOn: 1 }), "MMM dd");
     weeks[weekStart] = (weeks[weekStart] || 0) + 1;
   });
